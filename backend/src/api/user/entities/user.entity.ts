@@ -11,11 +11,6 @@ export class User {
   })
   password!: string;
 
-  @Column({
-    name: 'name',
-  })
-  name!: string;
-
   @CreateDateColumn({
     name: 'created_at',
   })
