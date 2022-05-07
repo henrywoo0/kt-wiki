@@ -1,7 +1,11 @@
 # dependencies
 node_modules/
 
+# environment files
 .env
+.env.dev
+.env.prod
+.env.test
 
 # IDE
 /.idea
@@ -27,6 +31,7 @@ yarn-error.log
 /quick-start
 /example_dist
 /example
+/dist
 
 # tests
 /test
