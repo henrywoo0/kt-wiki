@@ -8,8 +8,8 @@ import {
   Delete,
 } from '@nestjs/common';
 import { DocumentService } from './document.service';
-import { CreateDocumentDto } from './dto/create-document.dto';
-import { UpdateDocumentDto } from './dto/update-document.dto';
+import { CreateDocumentDto } from './dto/createDocument.dto';
+import { UpdateDocumentDto } from './dto/updateDocument.dto';
 
 @Controller('document')
 export class DocumentController {

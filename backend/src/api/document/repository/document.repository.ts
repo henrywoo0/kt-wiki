@@ -1,4 +1,5 @@
 import { EntityRepository, Repository } from 'typeorm';
+import { Document } from '../entities/document.entity';
 
 @EntityRepository(Document)
 export default class DocumentRepository extends Repository<Document> {
@@ -8,5 +9,9 @@ export default class DocumentRepository extends Repository<Document> {
         idx,
       })
       .getOne();
+  }
+
+  public findAllDocuments(): Promise<Document[]> {
+    return this.createQueryBuilder('document').getMany();
   }
 }
