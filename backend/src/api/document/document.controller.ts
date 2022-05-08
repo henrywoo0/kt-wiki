@@ -1,45 +1,55 @@
 import {
   Controller,
   Get,
-  Post,
   Body,
   Patch,
   Param,
-  Delete,
+  HttpStatus,
 } from '@nestjs/common';
+import BaseResponse from 'src/global/responses/base.response';
 import { DocumentService } from './document.service';
-import { CreateDocumentDto } from './dto/createDocument.dto';
 import { UpdateDocumentDto } from './dto/updateDocument.dto';
+import { Document } from './entities/document.entity';
 
 @Controller('document')
 export class DocumentController {
   constructor(private readonly documentService: DocumentService) {}
 
-  @Post()
-  create(@Body() createDocumentDto: CreateDocumentDto) {
-    return this.documentService.create(createDocumentDto);
-  }
-
   @Get()
-  findAll() {
-    return this.documentService.findAll();
+  async getAllDocuments(): Promise<BaseResponse<Document[]>> {
+    const documents: Document[] = await this.documentService.findAllDocuments();
+    return new BaseResponse<Document[]>(
+      HttpStatus.OK,
+      '모든 문서 조회 성공',
+      documents,
+    );
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.documentService.findOne(+id);
+  @Get(':idx')
+  async getDocumentByIdx(
+    @Param('idx') idx: number,
+  ): Promise<BaseResponse<Document>> {
+    const document: Document = await this.documentService.findDocumentByIdx(
+      idx,
+    );
+    return new BaseResponse<Document>(
+      HttpStatus.OK,
+      '문서 조회 성공',
+      document,
+    );
   }
 
-  @Patch(':id')
-  update(
-    @Param('id') id: string,
+  @Patch()
+  async updateDocument(
     @Body() updateDocumentDto: UpdateDocumentDto,
-  ) {
-    return this.documentService.update(+id, updateDocumentDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.documentService.remove(+id);
+  ): Promise<BaseResponse<Document>> {
+    const document: Document = await this.documentService.updateDocument(
+      updateDocumentDto,
+    );
+    return new BaseResponse<Document>(
+      HttpStatus.OK,
+      '문서 수정 성공',
+      document,
+    );
   }
 }

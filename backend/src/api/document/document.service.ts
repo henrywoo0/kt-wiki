@@ -9,8 +9,16 @@ import DocumentRepository from './repository/document.repository';
 export class DocumentService {
   constructor(private readonly documentRepository: DocumentRepository) {}
 
-  public async getAllDocuments(): Promise<Document[]> {
+  public async findAllDocuments(): Promise<Document[]> {
     return this.documentRepository.findAllDocuments();
+  }
+
+  public async findDocumentByIdx(idx: number): Promise<Document> {
+    const document: Document = await this.documentRepository.findOne(idx);
+    if (validationData(document)) {
+      throw new NotFoundException('해당 idx의 document를 찾을 수 없습니다.');
+    }
+    return document;
   }
 
   public async createDocument(
