@@ -1,5 +1,6 @@
 import {
   BadRequestException,
+  ForbiddenException,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
@@ -49,6 +50,10 @@ export class UserService {
 
     const token: string = null;
     const refreshToken: string = null;
+
+    if (token === undefined || refreshToken === undefined) {
+      throw new ForbiddenException(403, '토큰이 발급되지 않았습니다');
+    }
 
     return new LoginResponseDto(user, token, refreshToken);
   }
