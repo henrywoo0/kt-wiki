@@ -8,9 +8,9 @@ import {
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService, JwtSignOptions } from '@nestjs/jwt';
-import { IToken } from 'src/global/interfaces/IToken';
-import { ITokenPayload } from 'src/global/interfaces/ITokenPayload';
-import { isDiffrentUtil } from 'src/global/utils/comparison.util';
+import { IToken } from '../../global/interfaces/IToken';
+import { ITokenPayload } from '../../global/interfaces/ITokenPayload';
+import { isDiffrentUtil } from '../../global/utils/comparison.util';
 import ReissuanceDto from './dto/reissuance.dto';
 
 @Injectable()

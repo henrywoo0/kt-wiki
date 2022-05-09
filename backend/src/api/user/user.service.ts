@@ -13,10 +13,10 @@ import { ConfigService } from '@nestjs/config';
 import {
   existsData,
   validationData,
-} from 'src/global/utils/validationData.util';
+} from '../../global/utils/validationData.util';
 import { LoginResponseDto } from './dto/loginResponse.dto';
 import { TokenService } from '../token/token.service';
-import { isDiffrentUtil } from 'src/global/utils/comparison.util';
+import { isDiffrentUtil } from '../../global/utils/comparison.util';
 
 @Injectable()
 export class UserService {

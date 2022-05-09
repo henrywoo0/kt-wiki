@@ -1,5 +1,5 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import BaseResponse from 'src/global/responses/base.response';
+import BaseResponse from '../../global/responses/base.response';
 import ReissuanceDto from './dto/reissuance.dto';
 import { TokenService } from './token.service';
 
