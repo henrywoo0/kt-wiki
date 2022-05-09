@@ -5,6 +5,7 @@ import { UserModule } from './api/user/user.module';
 import { DatabaseModule } from './config/database/database.module';
 import { AdminModule } from './api/admin/admin.module';
 import { TokenModule } from './api/token/token.module';
+import { HistoryModule } from './history/history.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { TokenModule } from './api/token/token.module';
     UserModule,
     AdminModule,
     TokenModule,
+    HistoryModule,
   ],
   controllers: [],
   providers: [],
