@@ -15,12 +15,15 @@ import {
   validationData,
 } from 'src/global/utils/validationData.util';
 import { LoginResponseDto } from './dto/loginResponse.dto';
+import { TokenService } from '../token/token.service';
+import { isDiffrentUtil } from 'src/global/utils/comparison.util';
 
 @Injectable()
 export class UserService {
   constructor(
     private readonly userRepository: UserRepository,
     private readonly configService: ConfigService,
+    private readonly tokenService: TokenService,
   ) {}
 
   public async signUp(signUpDto: SignUpDto): Promise<User> {
@@ -51,8 +54,14 @@ export class UserService {
       throw new NotFoundException('ID 또는 Password가 일치하지 않습니다.');
     }
 
-    const token: string = null;
-    const refreshToken: string = null;
+    if (isDiffrentUtil(user.status, 1)) {
+      throw new ForbiddenException('승인되지 않은 유저입니다.');
+    }
+
+    const token: string = this.tokenService.generateAccessToken(user.id);
+    const refreshToken: string = this.tokenService.generateRefreshToken(
+      user.id,
+    );
 
     if (token === undefined || refreshToken === undefined) {
       throw new ForbiddenException(403, '토큰이 발급되지 않았습니다');
@@ -61,7 +70,7 @@ export class UserService {
     return new LoginResponseDto(user, token, refreshToken);
   }
 
-  public async findOne(id: string): Promise<User> {
+  public async findUserById(id: string): Promise<User> {
     const user = await this.userRepository.findOne(id);
 
     if (validationData(user)) {

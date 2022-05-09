@@ -33,7 +33,7 @@ export class UserController {
   async getUserById(
     @Param('id') id: string,
   ): Promise<BaseResponse<UserDataResponseDto>> {
-    const user: User = await this.userService.findOne(id);
+    const user: User = await this.userService.findUserById(id);
     const userData: UserDataResponseDto = new UserDataResponseDto(
       user.id,
       user.role,
