@@ -1,19 +1,11 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  HttpStatus,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, HttpStatus } from '@nestjs/common';
 import { UserService } from './user.service';
 import { SignUpDto } from './dto/signUp.dto';
 import { LoginDto } from './dto/login.dto';
 import BaseResponse from 'src/global/responses/base.response';
 import { User } from './entities/user.entity';
 import { LoginResponseDto } from './dto/loginResponse.dto';
+import { UserDataResponseDto } from './dto/userDataResponse.dto';
 
 @Controller('user')
 export class UserController {
@@ -38,8 +30,19 @@ export class UserController {
   }
 
   @Get(':id')
-  async getUserById(@Param('id') id: string): Promise<BaseResponse<User>> {
+  async getUserById(
+    @Param('id') id: string,
+  ): Promise<BaseResponse<UserDataResponseDto>> {
     const user: User = await this.userService.findOne(id);
-    return new BaseResponse<User>(HttpStatus.OK, '유저 조회 성공', user);
+    const userData: UserDataResponseDto = new UserDataResponseDto(
+      user.id,
+      user.role,
+      user.status,
+    );
+    return new BaseResponse<UserDataResponseDto>(
+      HttpStatus.OK,
+      '유저 조회 성공',
+      userData,
+    );
   }
 }

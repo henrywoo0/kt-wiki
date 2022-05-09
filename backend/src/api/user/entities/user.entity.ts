@@ -13,6 +13,12 @@ export class User {
   password!: string;
 
   @Column({
+    name: 'name',
+    length: 10,
+  })
+  name!: string;
+
+  @Column({
     name: 'role',
     type: 'enum',
     enum: UserRole,
