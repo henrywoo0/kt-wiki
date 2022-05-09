@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { validationData } from 'src/global/utils/validationData';
+import { validationData } from 'src/global/utils/validationData.util';
 import { CreateDocumentDto } from './dto/createDocument.dto';
 import { UpdateDocumentDto } from './dto/updateDocument.dto';
 import { Document } from './entities/document.entity';

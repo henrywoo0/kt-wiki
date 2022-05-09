@@ -10,7 +10,10 @@ import { User } from './entities/user.entity';
 import UserRepository from './repository/user.repository';
 import bcrypt from 'bcryptjs';
 import { ConfigService } from '@nestjs/config';
-import { existsData, validationData } from 'src/global/utils/validationData';
+import {
+  existsData,
+  validationData,
+} from 'src/global/utils/validationData.util';
 import { LoginResponseDto } from './dto/loginResponse.dto';
 
 @Injectable()

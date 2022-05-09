@@ -1,4 +1,4 @@
-import { UserRole } from 'src/global/enums/userRole.enum';
+import { UserRole } from 'src/global/constants/userRole.enum';
 
 export class UserDataResponseDto {
   id!: string;

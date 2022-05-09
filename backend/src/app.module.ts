@@ -3,7 +3,8 @@ import { ConfigModule } from '@nestjs/config';
 import { DocumentModule } from './api/document/document.module';
 import { UserModule } from './api/user/user.module';
 import { DatabaseModule } from './config/database/database.module';
-import { AdminModule } from './admin/admin.module';
+import { AdminModule } from './api/admin/admin.module';
+import { TokenModule } from './api/token/token.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { AdminModule } from './admin/admin.module';
     DocumentModule,
     UserModule,
     AdminModule,
+    TokenModule,
   ],
   controllers: [],
   providers: [],
