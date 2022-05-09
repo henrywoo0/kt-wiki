@@ -7,7 +7,7 @@ export const validationData = (data?: string | object): boolean => {
 };
 
 export const existsData = (data?: string | object): boolean => {
-  if (data !== undefined && data !== undefined) {
+  if (data === undefined || data === null) {
     return false;
   }
 

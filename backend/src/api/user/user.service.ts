@@ -8,7 +8,7 @@ import { LoginDto } from './dto/login.dto';
 import { SignUpDto } from './dto/signUp.dto';
 import { User } from './entities/user.entity';
 import UserRepository from './repository/user.repository';
-import bcrypt from 'bcryptjs';
+import * as bcrypt from 'bcrypt';
 import { ConfigService } from '@nestjs/config';
 import {
   existsData,
@@ -32,15 +32,16 @@ export class UserService {
     );
 
     if (existsData(user)) {
-      throw new BadRequestException('종복된 ID입니다.');
+      throw new BadRequestException('중복된 ID입니다.');
     }
 
-    const salt = this.configService.get<string>('HASH_SALT');
-    const hashedPassword = await bcrypt.hash(signUpDto.password, salt);
+    const salt: number = +this.configService.get<number>('HASH_SALT');
+    const hashedPassword: string = await bcrypt.hash(signUpDto.password, salt);
 
     return this.userRepository.save({
       id: signUpDto.id,
       password: hashedPassword,
+      name: signUpDto.name,
     });
   }
 

@@ -4,17 +4,21 @@ import {
   Injectable,
   UnauthorizedException,
 } from '@nestjs/common';
+import { Reflector } from '@nestjs/core';
 import { TokenService } from 'src/api/token/token.service';
 import { User } from 'src/api/user/entities/user.entity';
 import { UserService } from 'src/api/user/user.service';
+import { UserRole } from '../constants/userRole.enum';
 import { IToken } from '../interfaces/IToken';
 import { isDiffrentUtil } from '../utils/comparison.util';
+import matchRoles from '../utils/matchRoles';
 import { validationData } from '../utils/validationData.util';
 
 @Injectable()
-export default class TokenGuard implements CanActivate {
+export default class RoleGuard implements CanActivate {
   constructor(
     private readonly tokenService: TokenService,
+    private readonly reflector: Reflector,
     private readonly userSerivce: UserService,
   ) {}
 
@@ -22,6 +26,11 @@ export default class TokenGuard implements CanActivate {
     const request = context.switchToHttp().getRequest();
 
     const token: string | string[] = request.headers['authorization'];
+
+    const roles: UserRole[] = this.reflector.get<UserRole[]>(
+      'roles',
+      context.getClass(),
+    );
 
     if (validationData(token)) {
       throw new UnauthorizedException('토큰이 전송되지 않았습니다.');
@@ -49,6 +58,6 @@ export default class TokenGuard implements CanActivate {
 
     request.user = user;
 
-    return true;
+    return matchRoles(roles, user.role);
   }
 }
