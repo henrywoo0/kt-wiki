@@ -26,6 +26,7 @@ export class ErrorFilter<T> implements ExceptionFilter {
       });
     } else {
       Logger.error(exception);
+      console.log(exception);
       response.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
         status: HttpStatus.INTERNAL_SERVER_ERROR,
         message: '서버 에러',
