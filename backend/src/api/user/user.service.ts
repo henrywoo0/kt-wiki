@@ -36,6 +36,7 @@ export class UserService {
     }
 
     const salt: number = +this.configService.get<number>('HASH_SALT');
+
     const hashedPassword: string = await bcrypt.hash(signUpDto.password, salt);
 
     return this.userRepository.save({
@@ -46,13 +47,19 @@ export class UserService {
   }
 
   public async login(loginDto: LoginDto): Promise<LoginResponseDto> {
-    const user: User = await this.userRepository.findByIdAndPw(
-      loginDto.id,
-      loginDto.password,
-    );
+    const user: User = await this.userRepository.findOne(loginDto.id);
 
     if (validationData(user)) {
-      throw new NotFoundException('ID 또는 Password가 일치하지 않습니다.');
+      throw new NotFoundException('ID에 해당하는 계정이 없습니다.');
+    }
+
+    const isCorrectPassword: boolean = await bcrypt.compare(
+      loginDto.password,
+      user.password,
+    );
+
+    if (isCorrectPassword === false) {
+      throw new BadRequestException('비밀번호가 옳지 않습니다.');
     }
 
     if (isDiffrentUtil(user.status, 1)) {
