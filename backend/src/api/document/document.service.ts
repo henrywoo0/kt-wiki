@@ -1,7 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { validationData } from 'src/global/utils/validationData.util';
+import { History } from '../history/entities/history.entity';
+import { HistoryService } from '../history/history.service';
 import { User } from '../user/entities/user.entity';
-import { UserService } from '../user/user.service';
 import { CreateDocumentDto } from './dto/createDocument.dto';
 import { UpdateDocumentDto } from './dto/updateDocument.dto';
 import { Document } from './entities/document.entity';
@@ -9,7 +10,10 @@ import DocumentRepository from './repository/document.repository';
 
 @Injectable()
 export class DocumentService {
-  constructor(private readonly documentRepository: DocumentRepository) {}
+  constructor(
+    private readonly documentRepository: DocumentRepository,
+    private readonly historyService: HistoryService,
+  ) {}
 
   public async findAllDocuments(): Promise<Document[]> {
     return this.documentRepository.findAllDocuments();
@@ -26,7 +30,15 @@ export class DocumentService {
   public async createDocument(
     createDocumentDto: CreateDocumentDto,
   ): Promise<Document> {
-    return this.documentRepository.save(createDocumentDto);
+    const document: Document = await this.documentRepository.save(
+      createDocumentDto,
+    );
+    const history: History = await this.historyService.createHistory({
+      modifiedText: document.text,
+      userId: user.id,
+      documentIdx: document.idx,
+    });
+    return document;
   }
 
   public async updateDocument(
@@ -43,6 +55,13 @@ export class DocumentService {
       document,
       updateDocumentDto,
     );
+
+    const history: History = await this.historyService.createHistory({
+      modifiedText: updateDocumentDto.text,
+      userId: user.id,
+      documentIdx: newDocument.idx,
+    });
+
     return this.documentRepository.save(newDocument);
   }
 
