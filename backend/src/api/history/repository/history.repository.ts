@@ -6,4 +6,11 @@ export default class HistoryRepository extends Repository<History> {
   async findAllHistories(): Promise<History[]> {
     return this.createQueryBuilder('history').getMany();
   }
+
+  async findHistoriesByDocumentIdx(documentIdx: number): Promise<History[]> {
+    return this.createQueryBuilder('history')
+      .where('history.fk_document_idx = :idx', { idx: documentIdx })
+      .orderBy('history.idx', 'DESC')
+      .getMany();
+  }
 }

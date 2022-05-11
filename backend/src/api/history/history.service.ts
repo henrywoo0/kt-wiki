@@ -1,12 +1,17 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { validationData } from 'src/global/utils/validationData.util';
+import { DocumentService } from '../document/document.service';
+import { Document } from '../document/entities/document.entity';
 import { CreateHistoryDto } from './dto/createHistory.dto';
 import { History } from './entities/history.entity';
 import HistoryRepository from './repository/history.repository';
 
 @Injectable()
 export class HistoryService {
-  constructor(private readonly historyRepository: HistoryRepository) {}
+  constructor(
+    private readonly historyRepository: HistoryRepository,
+    private readonly documentService: DocumentService,
+  ) {}
 
   public async createHistory(
     createHistoryDto: CreateHistoryDto,
@@ -16,6 +21,15 @@ export class HistoryService {
 
   public async findAllHistories(): Promise<History[]> {
     return this.historyRepository.findAllHistories();
+  }
+
+  public async findHistoriesByDocumentIdx(
+    documentIdx: number,
+  ): Promise<History[]> {
+    const document: Document = await this.documentService.findDocumentByIdx(
+      documentIdx,
+    );
+    return this.historyRepository.findHistoriesByDocumentIdx(document.idx);
   }
 
   public async findHistoryByIdx(idx: number): Promise<History> {
