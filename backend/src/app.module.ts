@@ -5,7 +5,7 @@ import { UserModule } from './api/user/user.module';
 import { DatabaseModule } from './config/database/database.module';
 import { AdminModule } from './api/admin/admin.module';
 import { TokenModule } from './api/token/token.module';
-import { HistoryModule } from './history/history.module';
+import { HistoryModule } from './api/history/history.module';
 
 @Module({
   imports: [

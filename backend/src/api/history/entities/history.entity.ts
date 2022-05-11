@@ -1,7 +1,6 @@
 import { Document } from 'src/api/document/entities/document.entity';
 import { User } from 'src/api/user/entities/user.entity';
 import {
-  Column,
   CreateDateColumn,
   Entity,
   ManyToOne,

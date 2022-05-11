@@ -8,5 +8,6 @@ import DocumentRepository from './repository/document.repository';
   imports: [TypeOrmModule.forFeature([DocumentRepository])],
   controllers: [DocumentController],
   providers: [DocumentService],
+  exports: [DocumentService],
 })
 export class DocumentModule {}
