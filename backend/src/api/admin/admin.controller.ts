@@ -9,11 +9,14 @@ import {
 } from '@nestjs/common';
 import { UserRole } from 'src/global/constants/userRole.enum';
 import { Roles } from 'src/global/decorators/roles.decorator';
+import { Token } from 'src/global/decorators/token.decorator';
 import RoleGuard from 'src/global/guards/role.guard';
+import TokenGuard from 'src/global/guards/token.guard';
 import BaseResponse from 'src/global/responses/base.response';
 import { DocumentService } from '../document/document.service';
 import { CreateDocumentDto } from '../document/dto/createDocument.dto';
 import { Document } from '../document/entities/document.entity';
+import { User } from '../user/entities/user.entity';
 import { AdminService } from './admin.service';
 
 @Roles(UserRole.admin)
@@ -26,11 +29,14 @@ export class AdminController {
   ) {}
 
   @Post('/document')
+  @UseGuards(TokenGuard)
   async postDocument(
     @Body() createDocumentDto: CreateDocumentDto,
+    @Token() user: User,
   ): Promise<BaseResponse<Document>> {
     const document: Document = await this.documentService.createDocument(
       createDocumentDto,
+      user,
     );
     return new BaseResponse<Document>(
       HttpStatus.OK,

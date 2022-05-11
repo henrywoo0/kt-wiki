@@ -25,4 +25,8 @@ export class HistoryService {
     }
     return history;
   }
+
+  public async deleteHistory(idx: number): Promise<void> {
+    await this.historyRepository.delete(idx);
+  }
 }

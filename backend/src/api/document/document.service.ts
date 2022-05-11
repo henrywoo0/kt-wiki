@@ -1,6 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { validationData } from 'src/global/utils/validationData.util';
-import { History } from '../history/entities/history.entity';
 import { HistoryService } from '../history/history.service';
 import { User } from '../user/entities/user.entity';
 import { CreateDocumentDto } from './dto/createDocument.dto';
@@ -29,11 +28,12 @@ export class DocumentService {
 
   public async createDocument(
     createDocumentDto: CreateDocumentDto,
+    user: User,
   ): Promise<Document> {
     const document: Document = await this.documentRepository.save(
       createDocumentDto,
     );
-    const history: History = await this.historyService.createHistory({
+    await this.historyService.createHistory({
       modifiedText: document.text,
       userId: user.id,
       documentIdx: document.idx,
@@ -56,7 +56,7 @@ export class DocumentService {
       updateDocumentDto,
     );
 
-    const history: History = await this.historyService.createHistory({
+    await this.historyService.createHistory({
       modifiedText: updateDocumentDto.text,
       userId: user.id,
       documentIdx: newDocument.idx,
