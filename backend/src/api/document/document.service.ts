@@ -1,5 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { validationData } from 'src/global/utils/validationData.util';
+import { User } from '../user/entities/user.entity';
+import { UserService } from '../user/user.service';
 import { CreateDocumentDto } from './dto/createDocument.dto';
 import { UpdateDocumentDto } from './dto/updateDocument.dto';
 import { Document } from './entities/document.entity';
@@ -29,6 +31,7 @@ export class DocumentService {
 
   public async updateDocument(
     updateDocumentDto: UpdateDocumentDto,
+    user: User,
   ): Promise<Document> {
     const document: Document = await this.documentRepository.findByIdx(
       updateDocumentDto.idx,

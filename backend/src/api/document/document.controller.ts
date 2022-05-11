@@ -5,8 +5,12 @@ import {
   Patch,
   Param,
   HttpStatus,
+  UseGuards,
 } from '@nestjs/common';
+import { Token } from 'src/global/decorators/token.decorator';
+import TokenGuard from 'src/global/guards/token.guard';
 import BaseResponse from 'src/global/responses/base.response';
+import { User } from '../user/entities/user.entity';
 import { DocumentService } from './document.service';
 import { UpdateDocumentDto } from './dto/updateDocument.dto';
 import { Document } from './entities/document.entity';
@@ -40,11 +44,14 @@ export class DocumentController {
   }
 
   @Patch()
+  @UseGuards(TokenGuard)
   async updateDocument(
+    @Token() user: User,
     @Body() updateDocumentDto: UpdateDocumentDto,
   ): Promise<BaseResponse<Document>> {
     const document: Document = await this.documentService.updateDocument(
       updateDocumentDto,
+      user,
     );
     return new BaseResponse<Document>(
       HttpStatus.OK,
