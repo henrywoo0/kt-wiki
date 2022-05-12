@@ -1,26 +1,24 @@
-import styled from "styled-components";
-
-const Father = styled.div`
-  display: flex;
-`;
-
-const Box = styled.div`
-  background-color: ${(props) => props.bgColor};
-  width: 100px;
-  height: 100px;
-`;
-
-const Circle = styled(Box)`
-  border-radius: 50px;
-`;
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
   return (
-    <Father>
-      <Box bgColor="teal" />
-      <Box bgColor="tomato" />
-      <Circle bgColor="beige" />
-    </Father>
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
   );
 }
 
