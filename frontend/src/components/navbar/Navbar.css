@@ -1,0 +1,35 @@
+.navbar {
+  user-select: none;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 50px;
+}
+
+.navbar-title {
+  cursor: pointer;
+  font-size: 50px;
+  font-weight: 800;
+}
+
+.navbar-items {
+  display: flex;
+  justify-content: space-evenly;
+  width: 350px;
+  margin: auto 0;
+}
+
+.navbar-item {
+  font-size: 20px;
+  margin: 0 auto;
+  padding: 5px 10px;
+  transition: 0.3s;
+}
+
+.navbar-item:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}

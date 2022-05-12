@@ -1,0 +1,21 @@
+.footer {
+  padding: 75px 250px;
+  background-color: rgb(237, 237, 237);
+}
+
+.footer-menu {
+  display: flex;
+}
+
+.footer-menu li {
+  margin-right: 30px;
+}
+
+.footer-menu a {
+  text-decoration: none;
+  color: black;
+}
+
+.footer-menu a:hover {
+  text-decoration: underline;
+}

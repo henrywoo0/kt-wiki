@@ -1,0 +1,26 @@
+.not-found {
+  margin: 250px auto;
+  display: flex;
+  justify-content: center;
+  user-select: none;
+}
+
+.not-found div {
+  filter: blur(10px);
+  transition: 0.3s;
+}
+
+.not-found img {
+  width: 200px;
+  height: 200px;
+}
+
+.not-found p {
+  text-align: center;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.not-found div:hover {
+  filter: blur(0px);
+}

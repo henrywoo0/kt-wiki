@@ -1,0 +1,23 @@
+.jumbotron {
+  background-image: url("/public/kt-jumbotron.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 300px;
+  margin-bottom: 30px;
+  padding-left: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.jumbotron-h4 {
+  color: white;
+  font-size: 23px;
+}
+
+.jumbotron-h2 {
+  color: white;
+  font-weight: 500;
+  font-size: 80px;
+}
