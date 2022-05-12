@@ -1,38 +1,87 @@
-.App {
-  text-align: center;
+.navbar {
+  user-select: none;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.navbar-title {
+  cursor: pointer;
+  font-size: 50px;
+  font-weight: 800;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.navbar-items {
+  display: flex;
+  justify-content: space-evenly;
+  width: 300px;
+  margin: auto 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navbar-item {
+  font-size: 20px;
+  margin: 0 auto;
+  padding: 5px 10px;
+  transition: 0.3s;
+}
+
+.navbar-item:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.main {
+  margin-left: 250px;
+  margin-right: 250px;
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+
+.main-jumbotron {
+  background-image: url("/public/kt-jumbotron.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 300px;
+  margin-bottom: 30px;
+  padding-left: 50px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: flex-start;
+}
+
+.main-h4 {
   color: white;
+  font-size: 30px;
 }
 
-.App-link {
-  color: #61dafb;
+.main-h2 {
+  color: white;
+  font-weight: 500;
+  font-size: 100px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.list-item {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 30px;
+  box-shadow: 0 5px 18px -7px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.list-item:hover {
+  box-shadow: 0 5px 18px -7px rgba(0, 0, 0, 0.5);
+}
+
+.list-item-title {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.footer {
+  background-color: rgb(237, 237, 237);
 }
