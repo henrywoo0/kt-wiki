@@ -1,4 +1,9 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  forwardRef,
+  Inject,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { validationData } from 'src/global/utils/validationData.util';
 import { HistoryService } from '../history/history.service';
 import { User } from '../user/entities/user.entity';
@@ -11,6 +16,7 @@ import DocumentRepository from './repository/document.repository';
 export class DocumentService {
   constructor(
     private readonly documentRepository: DocumentRepository,
+    @Inject(forwardRef(() => HistoryService))
     private readonly historyService: HistoryService,
   ) {}
 
