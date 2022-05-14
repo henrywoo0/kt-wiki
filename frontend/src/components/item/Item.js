@@ -1,10 +1,10 @@
 import "./Item.css";
 
-function Item() {
+function Item({ title, hits }) {
   return (
     <div className="list-item">
-      <h4 className="list-item-title">기숙사 입소 첫 날의 경태</h4>
-      <p className="list-item-p">조회수 101</p>
+      <h4 className="list-item-title">{title}</h4>
+      <p className="list-item-p">조회수 {hits}</p>
     </div>
   );
 }

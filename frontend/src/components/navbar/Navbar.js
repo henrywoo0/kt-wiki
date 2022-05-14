@@ -10,6 +10,7 @@ function Navbar() {
         <li className="navbar-item">인물</li>
         <li className="navbar-item">사건사고</li>
         <li className="navbar-item">프로젝트에 관해</li>
+        <li className="navbar-item">로그인</li>
       </ul>
     </div>
   );

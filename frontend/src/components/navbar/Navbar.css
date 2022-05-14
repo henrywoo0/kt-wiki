@@ -17,15 +17,24 @@
 .navbar-items {
   display: flex;
   justify-content: space-evenly;
-  width: 350px;
+  flex-wrap: nowrap;
+  width: 470px;
   margin: auto 0;
 }
 
 .navbar-item {
+  display: inline-block;
   font-size: 20px;
   margin: 0 auto;
   padding: 5px 10px;
   transition: 0.3s;
+}
+
+.navbar-item:nth-last-child(1) {
+  width: 70px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .navbar-item:hover {
