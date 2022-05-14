@@ -6,6 +6,7 @@ import { DatabaseModule } from './config/database/database.module';
 import { AdminModule } from './api/admin/admin.module';
 import { TokenModule } from './api/token/token.module';
 import { HistoryModule } from './api/history/history.module';
+import { NoticeModule } from './api/notice/notice.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { HistoryModule } from './api/history/history.module';
     TokenModule,
     HistoryModule,
     DocumentModule,
+    NoticeModule,
   ],
   controllers: [],
   providers: [],

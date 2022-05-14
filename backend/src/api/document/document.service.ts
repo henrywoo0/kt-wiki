@@ -51,12 +51,9 @@ export class DocumentService {
     updateDocumentDto: UpdateDocumentDto,
     user: User,
   ): Promise<Document> {
-    const document: Document = await this.documentRepository.findByIdx(
+    const document: Document = await this.findDocumentByIdx(
       updateDocumentDto.idx,
     );
-    if (validationData(document)) {
-      throw new NotFoundException('해당 idx의 document를 찾을 수 없습니다.');
-    }
     const newDocument: Document = await this.documentRepository.merge(
       document,
       updateDocumentDto,

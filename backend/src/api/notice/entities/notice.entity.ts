@@ -1,4 +1,3 @@
-import { Document } from 'src/api/document/entities/document.entity';
 import { User } from 'src/api/user/entities/user.entity';
 import {
   Column,
@@ -6,35 +5,30 @@ import {
   Entity,
   ManyToOne,
   PrimaryGeneratedColumn,
-  UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('history')
-export class History {
+@Entity('notice')
+export class Notice {
   @PrimaryGeneratedColumn({
     name: 'idx',
   })
   idx!: number;
 
   @Column({
-    name: 'modified_text',
-    type: 'mediumtext',
+    name: 'title',
   })
-  modifiedText!: string;
+  title: string;
+
+  @Column({
+    name: 'text',
+  })
+  text!: string;
 
   @ManyToOne(() => User, (user) => user.id)
   fk_user_id!: string;
-
-  @ManyToOne(() => Document, (document) => document.idx)
-  fk_document_idx!: number;
 
   @CreateDateColumn({
     name: 'created_at',
   })
   createdAt!: Date;
-
-  @UpdateDateColumn({
-    name: 'updated_at',
-  })
-  updatedAt!: Date;
 }

@@ -5,9 +5,16 @@ import { TokenModule } from '../token/token.module';
 import { UserModule } from '../user/user.module';
 import { DocumentModule } from '../document/document.module';
 import { HistoryModule } from '../history/history.module';
+import { NoticeModule } from '../notice/notice.module';
 
 @Module({
-  imports: [TokenModule, UserModule, DocumentModule, HistoryModule],
+  imports: [
+    TokenModule,
+    UserModule,
+    DocumentModule,
+    HistoryModule,
+    NoticeModule,
+  ],
   controllers: [AdminController],
   providers: [AdminService],
 })
