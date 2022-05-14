@@ -10,7 +10,7 @@
 }
 
 .list-item:hover {
-  box-shadow: 0 5px 18px -7px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 18px -7px rgba(0, 0, 0, 0.8);
 }
 
 .list-item-title {

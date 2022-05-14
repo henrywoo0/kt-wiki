@@ -1,6 +1,7 @@
 .jumbotron {
   background-image: url("/public/kt-jumbotron.jpeg");
   background-position: center;
+  background-size: cover;
   background-repeat: no-repeat;
   height: 300px;
   margin-bottom: 30px;
