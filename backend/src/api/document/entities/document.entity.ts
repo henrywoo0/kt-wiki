@@ -23,6 +23,12 @@ export class Document {
   })
   text!: string;
 
+  @Column({
+    name: 'hits',
+    default: 0,
+  })
+  hits!: number;
+
   @CreateDateColumn({
     name: 'created_at',
   })

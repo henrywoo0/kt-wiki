@@ -33,9 +33,8 @@ export class DocumentController {
   async getDocumentByIdx(
     @Param('idx') idx: number,
   ): Promise<BaseResponse<Document>> {
-    const document: Document = await this.documentService.findDocumentByIdx(
-      idx,
-    );
+    const document: Document =
+      await this.documentService.findDocumentByIdxUpdatingHits(idx);
     return new BaseResponse<Document>(
       HttpStatus.OK,
       '문서 조회 성공',

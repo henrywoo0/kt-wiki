@@ -32,6 +32,16 @@ export class DocumentService {
     return document;
   }
 
+  public async findDocumentByIdxUpdatingHits(idx: number): Promise<Document> {
+    const document: Document = await this.documentRepository.findOne(idx);
+    if (validationData(document)) {
+      throw new NotFoundException('해당 idx의 document를 찾을 수 없습니다.');
+    }
+    document.hits++;
+    await this.documentRepository.save(document);
+    return document;
+  }
+
   public async createDocument(
     createDocumentDto: CreateDocumentDto,
     user: User,
