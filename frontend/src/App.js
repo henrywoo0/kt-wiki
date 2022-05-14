@@ -4,7 +4,7 @@ import Footer from "./components/footer/Footer";
 import Main from "./components/main/Main";
 import Navbar from "./components/navbar/Navbar";
 import NotFound from "./components/notFound/NotFound";
-import Detail from "./components/detail/Detail";
+import Document from "./components/document/Document";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/detail/*" element={<Detail />} />
+        <Route path="/document/:idx" element={<Document />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

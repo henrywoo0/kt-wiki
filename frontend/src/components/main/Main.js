@@ -22,7 +22,12 @@ function Main() {
     <div className="main">
       <Jumbotron />
       {documents.map((document) => (
-        <Item title={document.title} hits={document.hits} />
+        <Item
+          key={document.idx}
+          idx={document.idx}
+          title={document.title}
+          hits={document.hits}
+        />
       ))}
     </div>
   );
