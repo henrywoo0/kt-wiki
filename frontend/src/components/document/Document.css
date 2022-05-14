@@ -1,0 +1,24 @@
+.document {
+  margin-left: 270px;
+  margin-right: 270px;
+  margin-bottom: 70px;
+}
+
+.document-title {
+  font-size: 70px;
+  font-weight: 650;
+}
+
+.document-properties {
+  display: flex;
+}
+
+.document-p {
+  border-right: 1px solid black;
+  padding-right: 15px;
+  margin-right: 15px;
+}
+
+.document-p:nth-last-child(1) {
+  border-right: none;
+}
