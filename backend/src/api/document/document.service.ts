@@ -15,9 +15,9 @@ import DocumentRepository from './repository/document.repository';
 @Injectable()
 export class DocumentService {
   constructor(
-    private readonly documentRepository: DocumentRepository,
     @Inject(forwardRef(() => HistoryService))
     private readonly historyService: HistoryService,
+    private readonly documentRepository: DocumentRepository,
   ) {}
 
   public async findAllDocuments(): Promise<Document[]> {

@@ -5,12 +5,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import DocumentRepository from './repository/document.repository';
 import { HistoryModule } from '../history/history.module';
 import { TokenModule } from '../token/token.module';
+import { UserModule } from '../user/user.module';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([DocumentRepository]),
     forwardRef(() => HistoryModule),
     TokenModule,
+    UserModule,
   ],
   controllers: [DocumentController],
   providers: [DocumentService],

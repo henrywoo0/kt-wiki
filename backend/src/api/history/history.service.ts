@@ -14,9 +14,9 @@ import HistoryRepository from './repository/history.repository';
 @Injectable()
 export class HistoryService {
   constructor(
-    private readonly historyRepository: HistoryRepository,
     @Inject(forwardRef(() => DocumentService))
     private readonly documentService: DocumentService,
+    private readonly historyRepository: HistoryRepository,
   ) {}
 
   public async createHistory(
