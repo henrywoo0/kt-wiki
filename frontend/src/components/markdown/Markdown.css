@@ -1,6 +1,6 @@
 h1 {
-  font-size: 80px;
-  font-weight: 700;
+  font-size: 70px;
+  font-weight: 650;
   margin-block-start: 0.3em;
   margin-block-end: 0.3em;
   margin-inline-start: 0px;
@@ -50,4 +50,18 @@ p {
   margin-block-end: 1em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
+}
+
+hr {
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.15);
+  border: none;
+}
+
+strong {
+  font-weight: 900;
+}
+
+em {
+  font-style: italic;
 }
