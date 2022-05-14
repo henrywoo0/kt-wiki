@@ -6,7 +6,6 @@ import {
   Entity,
   ManyToOne,
   PrimaryGeneratedColumn,
-  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity('history')
@@ -32,9 +31,4 @@ export class History {
     name: 'created_at',
   })
   createdAt!: Date;
-
-  @UpdateDateColumn({
-    name: 'updated_at',
-  })
-  updatedAt!: Date;
 }
