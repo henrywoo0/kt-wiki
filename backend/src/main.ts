@@ -10,6 +10,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const PORT: number = app.get(ConfigService).get('PORT');
   setUpSwagger(app);
+  app.enableCors();
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalFilters(new ErrorFilter());
   app.useGlobalInterceptors(new LoggingInterceptor());
