@@ -3,8 +3,6 @@ import ReactMarkdown from "react-markdown";
 import "./Markdown.css";
 
 function Markdown({ text }) {
-  const md = "### 상빈\n하하\n> 호호\n\n헤헤";
-
   useEffect(() => {
     console.log(text);
     console.log(typeof text);
@@ -12,7 +10,7 @@ function Markdown({ text }) {
 
   return (
     <div>
-      <ReactMarkdown children={text + " " + md} />
+      <ReactMarkdown children={text} />
     </div>
   );
 }

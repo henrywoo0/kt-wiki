@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import toast from "../../lib/toast";
+import { toast } from "react-toastify";
+// import toast from "../../lib/toast";
 import Item from "../item/Item";
 import Jumbotron from "../jumbotron/Jumbotron";
 import "./Main.css";
