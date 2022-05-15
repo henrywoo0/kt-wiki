@@ -10,7 +10,7 @@ function Markdown({ text }) {
 
   return (
     <div>
-      <ReactMarkdown children={text} />
+      <ReactMarkdown children={text} className="react-markdown" />
     </div>
   );
 }

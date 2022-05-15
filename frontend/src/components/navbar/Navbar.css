@@ -32,6 +32,11 @@
   transition: 0.3s;
 }
 
+.navbar-item-link {
+  color: black;
+  transition: 0.3s;
+}
+
 .navbar-item:nth-last-child(1) {
   width: 70px;
   text-align: center;
@@ -43,4 +48,8 @@
   background-color: black;
   color: white;
   cursor: pointer;
+}
+
+.navbar-item-link:hover {
+  color: white;
 }

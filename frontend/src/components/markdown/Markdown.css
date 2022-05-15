@@ -65,3 +65,8 @@ strong {
 em {
   font-style: italic;
 }
+
+.react-markdown a {
+  text-decoration: underline;
+  color: #1abc9c;
+}
