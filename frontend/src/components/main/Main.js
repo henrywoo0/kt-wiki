@@ -28,15 +28,16 @@ function Main() {
   return (
     <div className="main">
       <Jumbotron />
-      {documents.map((document) => (
-        <Item
-          key={document.idx}
-          idx={document.idx}
-          title={document.title}
-          hits={document.hits}
-          category={document.category.name}
-        />
-      ))}
+      {documents &&
+        documents.map((document) => (
+          <Item
+            key={document.idx}
+            idx={document.idx}
+            title={document.title}
+            hits={document.hits}
+            category={document.category.name}
+          />
+        ))}
     </div>
   );
 }

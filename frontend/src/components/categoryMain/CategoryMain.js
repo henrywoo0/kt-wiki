@@ -28,15 +28,16 @@ function CategoryMain() {
 
   return (
     <div className="category-main">
-      {documents.map((document) => (
-        <Item
-          key={document.idx}
-          idx={document.idx}
-          title={document.title}
-          hits={document.hits}
-          category={1}
-        />
-      ))}
+      {documents &&
+        documents.map((document) => (
+          <Item
+            key={document.idx}
+            idx={document.idx}
+            title={document.title}
+            hits={document.hits}
+            category={"사건사고"}
+          />
+        ))}
     </div>
   );
 }
