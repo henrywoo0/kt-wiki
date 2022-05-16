@@ -6,6 +6,7 @@ import Navbar from "./components/navbar/Navbar";
 import NotFound from "./components/notFound/NotFound";
 import Document from "./components/document/Document";
 import AboutProject from "./components/page/AboutProject";
+import CategoryMain from "./components/categoryMain/CategoryMain";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/category/:idx" element={<CategoryMain />} />
         <Route path="/document/:idx" element={<Document />} />
         <Route path="/about-project" element={<AboutProject />} />
         <Route path="*" element={<NotFound />} />

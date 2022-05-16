@@ -1,20 +1,21 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-// import toast from "../../lib/toast";
 import Item from "../item/Item";
-import Jumbotron from "../jumbotron/Jumbotron";
-import "./Main.css";
+import "./Category.css";
 
-function Main() {
+function CategoryMain() {
+  const { idx } = useParams();
   const [documents, setDocuments] = useState([]);
 
   const getDocuments = async () => {
     try {
       const json = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/document`
+        `${process.env.REACT_APP_SERVER_URL}/document/category/${idx}`
       );
       setDocuments(json.data.data);
+      console.log(json.data.data);
     } catch (error) {
       console.log(error);
       toast.error("문서 리스트 불러오기에 실패했어요");
@@ -26,19 +27,18 @@ function Main() {
   }, []);
 
   return (
-    <div className="main">
-      <Jumbotron />
+    <div className="category-main">
       {documents.map((document) => (
         <Item
           key={document.idx}
           idx={document.idx}
           title={document.title}
           hits={document.hits}
-          category={document.category.name}
+          category={1}
         />
       ))}
     </div>
   );
 }
 
-export default Main;
+export default CategoryMain;

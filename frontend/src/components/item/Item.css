@@ -17,3 +17,15 @@
   font-size: 30px;
   margin-bottom: 10px;
 }
+
+.list-item-p {
+  margin-bottom: 5px;
+}
+
+.list-item-category {
+  display: inline-block;
+  background-color: black;
+  color: white;
+  padding: 5px 10px;
+  margin: 0;
+}
