@@ -14,7 +14,7 @@ export class NoticeService {
   }
 
   public async findNoticeByIdx(idx: number): Promise<Notice> {
-    const notice: Notice = await this.noticeRepository.findOne(idx);
+    const notice: Notice | undefined = await this.noticeRepository.findOne(idx);
     if (validationData(notice)) {
       throw new NotFoundException('해당 idx의 notice를 찾을 수 없습니다.');
     }

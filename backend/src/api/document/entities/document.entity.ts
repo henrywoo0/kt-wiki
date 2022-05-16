@@ -1,7 +1,10 @@
+import { Category } from 'src/api/category/entities/category.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -29,6 +32,10 @@ export class Document {
     default: 0,
   })
   hits!: number;
+
+  @ManyToOne(() => Category, (category) => category.idx)
+  @JoinColumn({ name: 'fk_category_idx' })
+  fk_category_idx!: number;
 
   @CreateDateColumn({
     name: 'created_at',

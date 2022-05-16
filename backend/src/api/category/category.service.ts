@@ -1,26 +1,30 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { validationData } from 'src/global/utils/validationData.util';
 import { CreateCategoryDto } from './dto/createCategory.dto';
 import { UpdateCategoryDto } from './dto/updateCategory.dto';
+import { Category } from './entities/category.entity';
+import CategoryRepository from './repository/category.repository';
 
 @Injectable()
 export class CategoryService {
-  create(createCategoryDto: CreateCategoryDto) {
-    return 'This action adds a new category';
+  constructor(private readonly categoryRepository: CategoryRepository) {}
+
+  public async createCategory(
+    createCategoryDto: CreateCategoryDto,
+  ): Promise<Category> {
+    return this.categoryRepository.save(createCategoryDto);
   }
 
-  findAll() {
-    return `This action returns all category`;
+  public async findAllCategories(): Promise<Category[]> {
+    return this.categoryRepository.findAllCategories();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} category`;
-  }
-
-  update(id: number, updateCategoryDto: UpdateCategoryDto) {
-    return `This action updates a #${id} category`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} category`;
+  public async findCategoryByIdx(idx: number): Promise<Category> {
+    const category: Category | undefined =
+      await this.categoryRepository.findOne(idx);
+    if (validationData(category)) {
+      throw new NotFoundException('해당 idx의 category를 찾을 수 없습니다.');
+    }
+    return category;
   }
 }

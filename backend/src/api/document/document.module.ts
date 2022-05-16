@@ -6,6 +6,7 @@ import DocumentRepository from './repository/document.repository';
 import { HistoryModule } from '../history/history.module';
 import { TokenModule } from '../token/token.module';
 import { UserModule } from '../user/user.module';
+import { CategoryModule } from '../category/category.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { UserModule } from '../user/user.module';
     forwardRef(() => HistoryModule),
     TokenModule,
     UserModule,
+    CategoryModule,
   ],
   controllers: [DocumentController],
   providers: [DocumentService],

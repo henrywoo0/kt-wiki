@@ -4,6 +4,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -22,9 +23,11 @@ export class History {
   modifiedText!: string;
 
   @ManyToOne(() => User, (user) => user.id)
+  @JoinColumn({ name: 'fk_user_id' })
   fk_user_id!: string;
 
   @ManyToOne(() => Document, (document) => document.idx)
+  @JoinColumn({ name: 'fk_document_idx' })
   fk_document_idx!: number;
 
   @CreateDateColumn({

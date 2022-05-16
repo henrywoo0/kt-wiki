@@ -32,9 +32,8 @@ export class HistoryService {
   public async findHistoriesByDocumentIdx(
     documentIdx: number,
   ): Promise<History[]> {
-    const document: Document = await this.documentService.findDocumentByIdx(
-      documentIdx,
-    );
+    const document: Document | undefined =
+      await this.documentService.findDocumentByIdx(documentIdx);
     return this.historyRepository.findHistoriesByDocumentIdx(document.idx);
   }
 

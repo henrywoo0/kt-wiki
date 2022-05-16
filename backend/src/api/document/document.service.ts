@@ -5,6 +5,8 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { validationData } from 'src/global/utils/validationData.util';
+import { CategoryService } from '../category/category.service';
+import { Category } from '../category/entities/category.entity';
 import { HistoryService } from '../history/history.service';
 import { User } from '../user/entities/user.entity';
 import { CreateDocumentDto } from './dto/createDocument.dto';
@@ -18,6 +20,7 @@ export class DocumentService {
     @Inject(forwardRef(() => HistoryService))
     private readonly historyService: HistoryService,
     private readonly documentRepository: DocumentRepository,
+    private readonly categoryService: CategoryService,
   ) {}
 
   public async findAllDocuments(): Promise<Document[]> {
@@ -33,13 +36,22 @@ export class DocumentService {
   }
 
   public async findDocumentByIdxUpdatingHits(idx: number): Promise<Document> {
-    const document: Document = await this.documentRepository.findOne(idx);
+    const document: Document | undefined =
+      await this.documentRepository.findOne(idx);
     if (validationData(document)) {
       throw new NotFoundException('해당 idx의 document를 찾을 수 없습니다.');
     }
     document.hits++;
     await this.documentRepository.save(document);
     return document;
+  }
+
+  public async findDocumentsByCategoryIdx(idx: number): Promise<Document[]> {
+    const category: Category | undefined =
+      await this.categoryService.findCategoryByIdx(idx);
+    const documents: Document[] =
+      await this.documentRepository.findDocumentsByCategoryIdx(category.idx);
+    return documents;
   }
 
   public async createDocument(
