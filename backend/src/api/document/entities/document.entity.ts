@@ -35,7 +35,7 @@ export class Document {
 
   @ManyToOne(() => Category, (category) => category.idx)
   @JoinColumn({ name: 'fk_category_idx' })
-  fk_category_idx!: number;
+  category!: Category;
 
   @CreateDateColumn({
     name: 'created_at',

@@ -3,9 +3,11 @@ import { Document } from '../entities/document.entity';
 
 @EntityRepository(Document)
 export default class DocumentRepository extends Repository<Document> {
-  public findByIdx(idx: number): Promise<Document | undefined> {
+  public findDocumentByIdxWithCategory(
+    idx: number,
+  ): Promise<Document | undefined> {
     return this.createQueryBuilder('document')
-      .leftJoinAndSelect('document.fk_category_idx', 'category')
+      .leftJoinAndSelect('document.category', 'category')
       .where('document.idx = :idx', {
         idx,
       })
@@ -33,7 +35,7 @@ export default class DocumentRepository extends Repository<Document> {
 
   public findDocumentsByCategoryIdx(idx: number): Promise<Document[]> {
     return this.createQueryBuilder('document')
-      .where('document.fk_category_idx = :idx', { idx })
+      .where('document.category = :idx', { idx })
       .getMany();
   }
 }

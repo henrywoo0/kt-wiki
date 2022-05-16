@@ -9,7 +9,7 @@ export default class HistoryRepository extends Repository<History> {
 
   async findHistoriesByDocumentIdx(documentIdx: number): Promise<History[]> {
     return this.createQueryBuilder('history')
-      .where('history.fk_document_idx = :idx', { idx: documentIdx })
+      .where('history.document = :idx', { idx: documentIdx })
       .orderBy('history.idx', 'DESC')
       .getMany();
   }

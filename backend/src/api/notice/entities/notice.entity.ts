@@ -27,7 +27,7 @@ export class Notice {
 
   @ManyToOne(() => User, (user) => user.id)
   @JoinColumn({ name: 'fk_user_id' })
-  fk_user_id!: string;
+  user!: User;
 
   @CreateDateColumn({
     name: 'created_at',

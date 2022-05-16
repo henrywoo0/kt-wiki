@@ -4,6 +4,7 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
+import { IDocumentResponse } from 'src/global/interfaces/IDocumentResponse';
 import { validationData } from 'src/global/utils/validationData.util';
 import { CategoryService } from '../category/category.service';
 import { Category } from '../category/entities/category.entity';
@@ -24,7 +25,7 @@ export class DocumentService {
   ) {}
 
   public async findAllDocuments(): Promise<Document[]> {
-    return this.documentRepository.findAllDocuments();
+    return this.documentRepository.findAllDocumentsOrderByHits();
   }
 
   public async findDocumentByIdx(idx: number): Promise<Document> {
@@ -35,9 +36,11 @@ export class DocumentService {
     return document;
   }
 
-  public async findDocumentByIdxUpdatingHits(idx: number): Promise<Document> {
+  public async findDocumentByIdxUpdatingHits(
+    idx: number,
+  ): Promise<IDocumentResponse> {
     const document: Document | undefined =
-      await this.documentRepository.findOne(idx);
+      await this.documentRepository.findDocumentByIdxWithCategory(idx);
     if (validationData(document)) {
       throw new NotFoundException('해당 idx의 document를 찾을 수 없습니다.');
     }
