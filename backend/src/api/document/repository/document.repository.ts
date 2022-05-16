@@ -22,6 +22,7 @@ export default class DocumentRepository extends Repository<Document> {
 
   public findAllDocumentsOrderByHits(): Promise<Document[]> {
     return this.createQueryBuilder('document')
+      .leftJoinAndSelect('document.category', 'category')
       .orderBy('document.hits', 'DESC')
       .addOrderBy('document.created_at', 'DESC')
       .getMany();
@@ -29,6 +30,7 @@ export default class DocumentRepository extends Repository<Document> {
 
   public findAllDocumentsOrderByUdatedAt(): Promise<Document[]> {
     return this.createQueryBuilder('document')
+      .leftJoinAndSelect('document.category', 'category')
       .orderBy('document.updated_at', 'DESC')
       .getMany();
   }

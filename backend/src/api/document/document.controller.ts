@@ -19,12 +19,25 @@ import { Document } from './entities/document.entity';
 export class DocumentController {
   constructor(private readonly documentService: DocumentService) {}
 
-  @Get()
+  @Get('')
   async getAllDocuments(): Promise<BaseResponse<Document[]>> {
     const documents: Document[] = await this.documentService.findAllDocuments();
     return new BaseResponse<Document[]>(
       HttpStatus.OK,
       '모든 문서 조회 성공',
+      documents,
+    );
+  }
+
+  @Get('/category/:idx')
+  async getDocumentsByCategoryIdx(
+    @Param('idx') idx: number,
+  ): Promise<BaseResponse<Document[]>> {
+    const documents: Document[] =
+      await this.documentService.findDocumentsByCategoryIdx(idx);
+    return new BaseResponse<Document[]>(
+      HttpStatus.OK,
+      '카테고리별 문서 조회 성공',
       documents,
     );
   }
