@@ -10,4 +10,4 @@
 ### 기술 스택
 백엔드에서는 `NestJS` 프레임워크 및 `TypeORM` 기술을 사용했고, DBMS는 `MySQL`을 사용했습니다.<br/>
 프론트엔드에서는 `React`를 사용했습니다. 
-
+(+갑작스럽게 추가된 안드로이드 버전은 [최민재](https://github.com/snack655)라는 친구가 [여기서](https://github.com/snack655/kt-wiki-Android) 제작합니다)
