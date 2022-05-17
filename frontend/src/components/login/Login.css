@@ -2,4 +2,44 @@
   margin-left: 270px;
   margin-right: 270px;
   margin-bottom: 70px;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-input {
+  display: block;
+  box-sizing: border-box;
+  width: 500px;
+  height: 50px;
+  margin: 40px auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: none;
+  cursor: text;
+  outline: none;
+  border-bottom: 1px solid black;
+  font-size: 20px;
+}
+
+.login-input-submit {
+  display: block;
+  width: 500px;
+  height: 60px;
+  margin: 20px auto;
+  font-size: 20px;
+  text-align: center;
+  color: white;
+  border: none;
+  background-color: black;
+  cursor: pointer;
+  margin-top: 70px;
+}
+
+.login-text {
+  text-align: center;
+  font-size: 15px;
+}
+
+.login-text:hover {
+  text-decoration: underline;
 }
