@@ -23,7 +23,11 @@ function Navbar() {
             프로젝트에 관해
           </Link>
         </li>
-        <li className="navbar-item">로그인</li>
+        <li className="navbar-item">
+          <Link to="/login" className="navbar-item-link">
+            로그인
+          </Link>
+        </li>
       </ul>
     </div>
   );

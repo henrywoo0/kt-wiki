@@ -7,6 +7,7 @@ import NotFound from "./components/notFound/NotFound";
 import Document from "./components/document/Document";
 import AboutProject from "./components/page/AboutProject";
 import CategoryMain from "./components/categoryMain/CategoryMain";
+import Login from "./components/login/Login";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/category/:idx" element={<CategoryMain />} />
         <Route path="/document/:idx" element={<Document />} />
         <Route path="/about-project" element={<AboutProject />} />
+        <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
