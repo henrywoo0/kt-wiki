@@ -4,7 +4,7 @@ import "./Login.css";
 function Login() {
   return (
     <div className="login">
-      <form>
+      <form action="/signup" method="post">
         <input
           type="text"
           name="id"

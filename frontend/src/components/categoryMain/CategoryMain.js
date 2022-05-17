@@ -15,7 +15,6 @@ function CategoryMain() {
         `${process.env.REACT_APP_SERVER_URL}/document/category/${idx}`
       );
       setDocuments(json.data.data);
-      console.log(json.data.data);
     } catch (error) {
       console.log(error);
       toast.error("문서 리스트 불러오기에 실패했어요");

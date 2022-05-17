@@ -1,11 +1,10 @@
-import { useEffect } from "react";
-import ReactMarkdown from "react-markdown";
+import { Viewer } from "@toast-ui/react-editor";
 import "./Markdown.css";
 
 function Markdown({ text }) {
   return (
     <div>
-      <ReactMarkdown children={text} className="react-markdown" />
+      <Viewer initialValue={text} className="markdown" />
     </div>
   );
 }
