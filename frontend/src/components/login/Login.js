@@ -1,12 +1,14 @@
 import axios from "axios";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "./Login.css";
 
 function Login() {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const handleInputId = (e) => {
     setId(e.target.value);
@@ -26,7 +28,11 @@ function Login() {
           password: password,
         }
       );
-      console.log(json.data.data);
+      const data = json.data.data;
+      sessionStorage.setItem("token", data.token);
+      sessionStorage.setItem("refresh-token", data.refreshToken);
+      localStorage.setItem("userId", data.user.id);
+      navigate("/", { replace: true });
     } catch (error) {
       toast.error(error.response.data.message);
     }
