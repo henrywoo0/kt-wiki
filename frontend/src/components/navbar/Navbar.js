@@ -1,7 +1,18 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar() {
+  const [userId, setUserId] = useState();
+
+  const getUserId = () => {
+    setUserId(localStorage.getItem("userId"));
+  };
+
+  useEffect(() => {
+    getUserId();
+  }, []);
+
   return (
     <div className="navbar">
       <h1 className="navbar-title">
@@ -25,7 +36,7 @@ function Navbar() {
         </li>
         <li className="navbar-item">
           <Link to="/login" className="navbar-item-link">
-            로그인
+            {userId || "로그인"}
           </Link>
         </li>
       </ul>

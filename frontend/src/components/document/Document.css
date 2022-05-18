@@ -11,6 +11,7 @@
 
 .document-properties {
   display: flex;
+  margin-bottom: 70px;
 }
 
 .document-p {

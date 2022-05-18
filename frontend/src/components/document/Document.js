@@ -17,6 +17,10 @@ function Document() {
   };
 
   useEffect(() => {
+    console.log(document);
+  }, [document]);
+
+  useEffect(() => {
     getDocument();
   }, []);
 
