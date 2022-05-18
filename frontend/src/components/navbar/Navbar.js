@@ -35,7 +35,7 @@ function Navbar() {
           </Link>
         </li>
         <li className="navbar-item">
-          <Link to="/login" className="navbar-item-link">
+          <Link to={userId ? "/mypage" : "/login"} className="navbar-item-link">
             {userId || "로그인"}
           </Link>
         </li>

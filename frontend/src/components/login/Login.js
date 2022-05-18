@@ -32,6 +32,7 @@ function Login() {
       sessionStorage.setItem("token", data.token);
       sessionStorage.setItem("refresh-token", data.refreshToken);
       localStorage.setItem("userId", data.user.id);
+      localStorage.setItem("userName", data.user.name);
       navigate("/", { replace: true });
     } catch (error) {
       toast.error(error.response.data.message);
