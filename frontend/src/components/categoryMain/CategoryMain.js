@@ -16,14 +16,13 @@ function CategoryMain() {
       );
       setDocuments(json.data.data);
     } catch (error) {
-      console.log(error);
-      toast.error("문서 리스트 불러오기에 실패했어요");
+      toast.error("문서 리스트 불러오기에 실패했습니다.");
     }
   };
 
   useEffect(() => {
     getDocuments();
-  }, []);
+  }, [idx]);
 
   return (
     <div className="category-main">

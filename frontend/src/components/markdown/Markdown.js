@@ -1,17 +1,19 @@
 import { Viewer } from "@toast-ui/react-editor";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import "./Markdown.css";
 
 function Markdown({ text }) {
-  const md = useMemo(() => {
-    return String(text);
-  }, [text]);
+  // useEffect(() => {
+  //   console.log(text);
+  // }, [text]);
 
-  const md2 = "### 경태는 전설이다.\n> 호호호";
+  // const testmd = useMemo(() => {
+  //   return text;
+  // }, [text]);
 
   return (
     <div>
-      <Viewer initialValue={md2} />
+      <Viewer initialValue={text} />
     </div>
   );
 }
