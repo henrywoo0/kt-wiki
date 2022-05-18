@@ -19,26 +19,18 @@ function Navbar() {
         <a href="/">경태위키</a>
       </h1>
       <ul className="navbar-items">
-        <li className="navbar-item">
-          <Link to="/category/2" className="navbar-item-link">
-            인물
-          </Link>
-        </li>
-        <li className="navbar-item">
-          <Link to="/category/1" className="navbar-item-link">
-            사건사고
-          </Link>
-        </li>
-        <li className="navbar-item">
-          <Link to="/about-project" className="navbar-item-link">
-            프로젝트에 관해
-          </Link>
-        </li>
-        <li className="navbar-item">
-          <Link to={userId ? "/mypage" : "/login"} className="navbar-item-link">
-            {userId || "로그인"}
-          </Link>
-        </li>
+        <Link to="/category/2" className="navbar-item">
+          <li>인물</li>
+        </Link>
+        <Link to="/category/1" className="navbar-item">
+          <li>사건사고</li>
+        </Link>
+        <Link to="/about-project" className="navbar-item">
+          <li>프로젝트에 관해</li>
+        </Link>
+        <Link to={userId ? "/mypage" : "/login"} className="navbar-item">
+          <li>{userId || "로그인"}</li>
+        </Link>
       </ul>
     </div>
   );
