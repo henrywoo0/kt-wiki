@@ -8,6 +8,7 @@ import Document from "./components/document/Document";
 import AboutProject from "./components/page/AboutProject";
 import CategoryMain from "./components/categoryMain/CategoryMain";
 import Login from "./components/login/Login";
+import Signup from "./components/signup/Signup";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/document/:idx" element={<Document />} />
         <Route path="/about-project" element={<AboutProject />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

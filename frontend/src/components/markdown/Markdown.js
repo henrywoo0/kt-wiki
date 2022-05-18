@@ -4,7 +4,7 @@ import "./Markdown.css";
 function Markdown({ text }) {
   return (
     <div>
-      <Viewer initialValue={text} className="markdown" />
+      <Viewer initialValue={text} />
     </div>
   );
 }
