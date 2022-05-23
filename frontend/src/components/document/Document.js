@@ -1,22 +1,23 @@
+import { Viewer } from "@toast-ui/react-editor";
 import axios from "axios";
 import moment from "moment";
 import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import Markdown from "../markdown/Markdown";
 import "./Document.css";
 
 function Document() {
   const { idx } = useParams();
   const [document, setDocument] = useState({});
+  const [text, setText] = useState("");
 
   const getDocument = useCallback(async () => {
     try {
       const json = await axios.get(
         `${process.env.REACT_APP_SERVER_URL}/document/${idx}`
       );
-
       setDocument(json.data.data);
+      setText(json.data.data.text);
     } catch (error) {
       toast.error("문서 불러오기에 실패했습니다.");
     }
@@ -43,7 +44,7 @@ function Document() {
           {moment(document.updatedAt).format("YYYY년 MM월 DD일 hh:mm")} 수정됨
         </p>
       </div>
-      {document && <Markdown text={document.text} />}
+      {text && <Viewer initialValue={text} />}
     </div>
   );
 }

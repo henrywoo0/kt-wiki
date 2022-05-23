@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar() {
-  const [userId, setUserId] = useState();
+  const [userName, setUserName] = useState();
 
-  const getUserId = () => {
-    setUserId(localStorage.getItem("userId"));
+  const getUserName = () => {
+    setUserName(localStorage.getItem("userName"));
   };
 
   useEffect(() => {
-    getUserId();
+    getUserName();
   }, []);
 
   return (
@@ -28,8 +28,8 @@ function Navbar() {
         <Link to="/about-project" className="navbar-item">
           <li>프로젝트에 관해</li>
         </Link>
-        <Link to={userId ? "/mypage" : "/login"} className="navbar-item">
-          <li>{userId || "로그인"}</li>
+        <Link to={userName ? "/mypage" : "/login"} className="navbar-item">
+          <li>{userName || "로그인"}</li>
         </Link>
       </ul>
     </div>

@@ -1,3 +1,4 @@
+import { Viewer } from "@toast-ui/react-editor";
 import Markdown from "../markdown/Markdown";
 import "./AboutProject.css";
 
@@ -9,9 +10,9 @@ function AboutProject() {
   return (
     <div className="about">
       <h3>이 프로젝트는?</h3>
-      <Markdown text={aboutProjectText} />
+      <Viewer initialValue={aboutProjectText} />
       <h3>이 프로젝트의 개발자는?</h3>
-      <Markdown text={aboutDeveloperText} />
+      <Viewer initialValue={aboutDeveloperText} />
     </div>
   );
 }

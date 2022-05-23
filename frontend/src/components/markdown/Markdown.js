@@ -1,19 +1,17 @@
 import { Viewer } from "@toast-ui/react-editor";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import "./Markdown.css";
 
 function Markdown({ text }) {
-  // useEffect(() => {
-  //   console.log(text);
-  // }, [text]);
+  const [markdown, setMarkdown] = useState("");
 
-  // const testmd = useMemo(() => {
-  //   return text;
-  // }, [text]);
+  useEffect(() => {
+    setMarkdown(text);
+  }, [text]);
 
   return (
     <div>
-      <Viewer initialValue={text} />
+      <Viewer initialValue={markdown} />
     </div>
   );
 }
