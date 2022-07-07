@@ -17,7 +17,7 @@ function Document() {
         `${process.env.REACT_APP_SERVER_URL}/document/${idx}`
       );
       setDocument(json.data.data);
-      setText(json.data.data.text);
+      setText(json.data.data.text.replaceAll("\\n", "\n"));
     } catch (error) {
       toast.error("문서 불러오기에 실패했습니다.");
     }
