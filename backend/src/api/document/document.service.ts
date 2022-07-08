@@ -84,11 +84,11 @@ export class DocumentService {
       updateDocumentDto,
     );
 
-    await this.historyService.createHistory({
-      modifiedText: updateDocumentDto.text,
-      userId: user.id,
-      documentIdx: newDocument.idx,
-    });
+    // await this.historyService.createHistory({
+    //   modifiedText: updateDocumentDto.text,
+    //   userId: user.id,
+    //   documentIdx: newDocument.idx,
+    // });
 
     return this.documentRepository.save(newDocument);
   }

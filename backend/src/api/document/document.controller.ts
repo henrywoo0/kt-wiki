@@ -42,12 +42,26 @@ export class DocumentController {
     );
   }
 
-  @Get(':idx')
-  async getDocumentByIdx(
+  @Get('/:idx')
+  async getDocumentByIdxUpdatingHits(
     @Param('idx') idx: number,
   ): Promise<BaseResponse<Document>> {
     const document: Document =
       await this.documentService.findDocumentByIdxUpdatingHits(idx);
+    return new BaseResponse<Document>(
+      HttpStatus.OK,
+      '문서 조회 성공',
+      document,
+    );
+  }
+
+  @Get('/only/:idx')
+  async getDocumentByIdx(
+    @Param('idx') idx: number,
+  ): Promise<BaseResponse<Document>> {
+    const document: Document = await this.documentService.findDocumentByIdx(
+      idx,
+    );
     return new BaseResponse<Document>(
       HttpStatus.OK,
       '문서 조회 성공',
