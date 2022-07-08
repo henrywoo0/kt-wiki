@@ -1,4 +1,4 @@
-h1 {
+.md h1 {
   font-size: 70px;
   font-weight: 650;
   margin-block-start: 0.3em;
@@ -7,7 +7,7 @@ h1 {
   margin-inline-end: 0px;
 }
 
-h2 {
+.md h2 {
   font-size: 60px;
   font-weight: 600;
   margin-block-start: 0.3em;
@@ -16,17 +16,17 @@ h2 {
   margin-inline-end: 0px;
 }
 
-h3 {
+.md h3 {
   font-size: 40px;
   font-weight: 550;
 }
 
-h4 {
+.md h4 {
   font-size: 30px;
   font-weight: 450;
 }
 
-code {
+.md code {
   background: rgba(0, 0, 0, 0.1);
   padding: 0.1em 0.3em 0 0.3em;
   margin: 0 0.1em 0 0.1em;
@@ -34,7 +34,7 @@ code {
   border-radius: 5px;
 }
 
-blockquote {
+.md blockquote {
   margin: 2rem 0px;
   border-left: 4px solid black;
   border-top-right-radius: 4px;
@@ -44,7 +44,7 @@ blockquote {
   color: var(--text1);
 }
 
-p {
+.md p {
   font-size: 20px;
   margin-block-start: 1em;
   margin-block-end: 1em;
@@ -52,21 +52,26 @@ p {
   margin-inline-end: 0px;
 }
 
-hr {
+.md hr {
   height: 1px;
   background-color: rgba(0, 0, 0, 0.15);
   border: none;
 }
 
-strong {
+.md strong {
   font-weight: 900;
 }
 
-em {
+.md em {
   font-style: italic;
 }
 
-.markdown a {
+.md li {
+  margin-left: 20px;
+  list-style-type: initial;
+}
+
+.md a {
   text-decoration: underline;
   color: #1abc9c;
 }
