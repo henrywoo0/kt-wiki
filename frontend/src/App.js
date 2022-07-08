@@ -10,6 +10,7 @@ import CategoryMain from "./components/categoryMain/CategoryMain";
 import Login from "./components/login/Login";
 import Signup from "./components/signup/Signup";
 import Mypage from "./components/mypage/Mypage";
+import MarkdownEditor from "./components/editor/MarkdownEditor";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/category/:idx" element={<CategoryMain />} />
         <Route path="/document/:idx" element={<Document />} />
+        <Route path="/edit/:idx" element={<MarkdownEditor />} />
         <Route path="/about-project" element={<AboutProject />} />
         <Route path="/login" element={<Login />} />
         <Route path="/mypage" element={<Mypage />} />
