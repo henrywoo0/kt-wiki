@@ -11,3 +11,10 @@
 백엔드에서는 `NestJS` 프레임워크 및 `TypeORM` 기술을 사용했고, DBMS는 `MySQL`을 사용했습니다.<br/>
 프론트엔드에서는 `React`를 사용했습니다. 
 (+갑작스럽게 추가된 안드로이드 버전은 [최민재](https://github.com/snack655)라는 친구가 [여기서](https://github.com/snack655/kt-wiki-Android) 제작합니다)
+
+### 진행 상황
+- [x] 회원가입 및 로그인 기능
+- [x] 어드민 카테고리 추가 기능
+- [x] 어드민 문서 추가 기능
+- [x] 문서 조회 기능 (Markdown)
+- [ ] 문서 편집 기능 (Markdown, 동시 편집 제어해야 함)
